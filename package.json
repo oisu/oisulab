@@ -1,0 +1,32 @@
+{
+  "name": "oisulab",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "apollo-boost": "^0.1.10",
+    "graphql": "^0.13.2",
+    "graphql-tag": "^2.9.2",
+    "react": "^16.4.1",
+    "react-apollo": "^2.1.9",
+    "react-dom": "^16.4.1",
+    "react-scripts-ts": "2.16.0"
+  },
+  "scripts": {
+    "start": "react-scripts-ts start",
+    "build": "react-scripts-ts build",
+    "test": "react-scripts-ts test --env=jsdom",
+    "eject": "react-scripts-ts eject"
+  },
+  "devDependencies": {
+    "@types/graphql": "^0.13.3",
+    "@types/jest": "^23.0.2",
+    "@types/node": "^10.3.2",
+    "@types/prop-types": "^15.5.3",
+    "@types/react": "^16.3.17",
+    "@types/react-dom": "^16.0.6",
+    "tslint": "^5.11.0",
+    "tslint-config-standard": "^7.1.0",
+    "tslint-react": "^3.6.0",
+    "typescript": "^2.9.1"
+  }
+}
