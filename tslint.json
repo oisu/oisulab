@@ -7,7 +7,9 @@
   },
   "rules": {
     "jsx-no-multiline-js": false,
+    "no-submodule-imports": false,
     "arrow-parens": false,
+    "jsx-boolean-value": false,
     "trailing-comma": true,
     "no-unused-variable": null
   }
