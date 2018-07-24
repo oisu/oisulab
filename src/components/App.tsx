@@ -4,25 +4,14 @@ import { ChildDataProps } from 'react-apollo'
 import { compose } from 'recompose'
 import 'semantic-ui-css/semantic.min.css'
 
-import {
-  Card,
-  Container,
-  Dimmer,
-  Divider,
-  Feed,
-  Grid,
-  Header,
-  Icon,
-  Image,
-  List,
-  Loader,
-  Segment
-} from 'semantic-ui-react'
+import { Card, Container, Dimmer, Divider, Grid, Header, Icon, Image, List, Loader, Segment } from 'semantic-ui-react'
 import { withWork } from '../enhancers/graphql'
 import { renderWhileLoading } from '../enhancers/navigation'
-import Logo from '../images/logo.png'
 import Me from '../images/me.jpg'
 import '../styles/App.css'
+import Certificate from './Certificate'
+import Education from './Education'
+import Experience from './Experience'
 import Menu from './Menu'
 
 const Loading = () => (
@@ -41,7 +30,11 @@ const App = (props: ChildDataProps<IWorkResponse>) => {
 
       <Container text style={{ marginTop: '7em' }}>
 
-        <Header as='h1'>About Me</Header>
+        <Header as='h2'>
+          <Header.Content>About Me</Header.Content>
+          <Divider />
+          <Divider hidden />
+        </Header>
 
         <Card centered>
           <Image src={Me}/>
@@ -68,30 +61,33 @@ const App = (props: ChildDataProps<IWorkResponse>) => {
           </Card.Content>
         </Card>
 
-        <Header as='h1'>Experiences</Header>
+        <Header as='h1'>
+          <Divider hidden />
+          <Header.Content>Experiences</Header.Content>
+          <Divider />
+          <Divider hidden />
+        </Header>
 
-        <Feed size='large'>
-          <Feed.Event>
-            <Feed.Label image={Me}/>
-            <Feed.Content>
-              <Feed.Summary>
-                I launched <a>Oisu Lab</a> and started a freelance career.
-                <Feed.Date>3 Months Ago</Feed.Date>
-              </Feed.Summary>
-              <Feed.Extra images>
-                <a>
-                  <Image src={Logo} verticalAlign='middle'/>
-                </a>
-              </Feed.Extra>
-              <Feed.Meta>
-                <Feed.Like>
-                  <Icon name='like'/>
-                  9999 Likes
-                </Feed.Like>
-              </Feed.Meta>
-            </Feed.Content>
-          </Feed.Event>
-        </Feed>
+        <Experience/>
+
+        <Header as='h1'>
+          <Divider hidden />
+          <Header.Content>Educations</Header.Content>
+          <Divider />
+          <Divider hidden />
+        </Header>
+
+        <Education/>
+
+        <Header as='h1'>
+          <Divider hidden />
+          <Header.Content>Certificates</Header.Content>
+          <Divider />
+          <Divider hidden />
+        </Header>
+
+        <Certificate/>
+
       </Container>
 
       <Segment inverted vertical style={{ margin: '5em 0em 0em', padding: '5em 0em' }}>
