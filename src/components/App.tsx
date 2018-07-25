@@ -4,14 +4,14 @@ import { ChildDataProps } from 'react-apollo'
 import { compose } from 'recompose'
 import 'semantic-ui-css/semantic.min.css'
 
-import { Card, Container, Dimmer, Divider, Grid, Header, Icon, Image, List, Loader, Segment } from 'semantic-ui-react'
-import { withWork } from '../enhancers/graphql'
+import { Container, Dimmer, Divider, Grid, Header, Image, List, Loader, Segment } from 'semantic-ui-react'
+import { withAllData } from '../enhancers/graphql'
 import { renderWhileLoading } from '../enhancers/navigation'
-import Me from '../images/me.jpg'
 import '../styles/App.css'
 import Certificate from './Certificate'
 import Education from './Education'
 import Experience from './Experience'
+import Me from './Me'
 import Menu from './Menu'
 
 const Loading = () => (
@@ -22,71 +22,48 @@ const Loading = () => (
   </Segment>
 )
 
-const App = (props: ChildDataProps<IWorkResponse>) => {
-  console.log(props)
+const App = ({ data, data: { certificates, educations, experiences, mes } }: ChildDataProps<IAllDataResponse>) => {
+  const me = mes && mes[0]
   return (
     <div>
       <Menu/>
 
-      <Container text style={{ marginTop: '7em' }}>
+      <Container text style={{ marginTop: '5em' }}>
 
         <Header as='h2'>
           <Header.Content>About Me</Header.Content>
-          <Divider />
-          <Divider hidden />
+          <Divider/>
+          <Divider hidden/>
         </Header>
 
-        <Card centered>
-          <Image src={Me}/>
-          <Card.Content>
-            <Card.Header>Hiroaki Miura</Card.Header>
-            <Card.Meta>
-              <span className='date'>Startup-minded Engineer</span>
-            </Card.Meta>
-            <Card.Description>10+ years experience of development</Card.Description>
-          </Card.Content>
-          <Card.Content extra>
-            <div>
-              <a>
-                <Icon name='location arrow'/>
-                Kawasaki-shi, Kanagawa
-              </a>
-            </div>
-            <div>
-              <a>
-                <Icon name='birthday cake'/>
-                Born on May 24, 1984
-              </a>
-            </div>
-          </Card.Content>
-        </Card>
+        {me && <Me me={me}/>}
 
         <Header as='h1'>
-          <Divider hidden />
+          <Divider hidden/>
           <Header.Content>Experiences</Header.Content>
-          <Divider />
-          <Divider hidden />
+          <Divider/>
+          <Divider hidden/>
         </Header>
 
-        <Experience/>
+        <Experience experiences={experiences}/>
 
         <Header as='h1'>
-          <Divider hidden />
+          <Divider hidden/>
           <Header.Content>Educations</Header.Content>
-          <Divider />
-          <Divider hidden />
+          <Divider/>
+          <Divider hidden/>
         </Header>
 
-        <Education/>
+        <Education educations={educations}/>
 
         <Header as='h1'>
-          <Divider hidden />
+          <Divider hidden/>
           <Header.Content>Certificates</Header.Content>
-          <Divider />
-          <Divider hidden />
+          <Divider/>
+          <Divider hidden/>
         </Header>
 
-        <Certificate/>
+        <Certificate certificates={certificates}/>
 
       </Container>
 
@@ -153,6 +130,6 @@ const App = (props: ChildDataProps<IWorkResponse>) => {
 }
 
 export default compose(
-  withWork(),
+  withAllData(),
   renderWhileLoading(Loading),
 )(App)

@@ -1,16 +1,21 @@
 import gql from 'graphql-tag'
 
-export const getWorkQuery = gql`
-  query GetWork {
+export const getAllQuery = gql`
+  query GetAllQuery {
+    mes {
+      name
+      title
+      intro
+      location
+      birthday
+      image {
+        url
+      }
+    }
     works {
       url
       name
     }
-  }
-`
-
-export const getExperienceQuery = gql`
-  query GetExperience {
     experiences (orderBy: startedAt_DESC) {
       name
       description
@@ -27,33 +32,20 @@ export const getExperienceQuery = gql`
       startedAt
       endedAt
     }
-  }
-`
-
-export const getEducationQuery = gql`
-  query GetEducation {
     educations {
       name
       description
       image {
-        fileName
-        handle
         url
-        mimeType
-        size
       }
       major
       location
       startedAt
       endedAt
     }
-  }
-`
-
-export const getCertificateQuery = gql`
-  query GetCertificate {
     certificates {
       name
+      certificateType
     }
   }
 `

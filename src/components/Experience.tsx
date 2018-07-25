@@ -1,19 +1,19 @@
 import moment from 'moment'
 // tslint:disable:no-console
 import * as React from 'react'
-import { ChildDataProps } from 'react-apollo'
-import { compose } from 'recompose'
 
-import { Item, Label } from 'semantic-ui-react'
-import { withExperience } from '../enhancers/graphql'
+import { Icon, Item, Label } from 'semantic-ui-react'
 import '../styles/App.css'
+
+interface IExperienceProps {
+  experiences: [IExperience]
+}
 
 const formattedDate = (date?: string) => {
   return date ? moment(date).format('MMM YYYY') : 'Present'
 }
 
-const Experience = ({ data }: ChildDataProps<IExperienceResponse>) => {
-  const { experiences } = data
+const Experience = ({ experiences }: IExperienceProps) => {
   return (
     <div>
       {experiences && experiences.map(e =>
@@ -23,7 +23,11 @@ const Experience = ({ data }: ChildDataProps<IExperienceResponse>) => {
             <Item.Content verticalAlign='middle'>
               <Item.Header as='a'>{e.jobTitle}</Item.Header>
               <Item.Meta>
-                <span>{e.name},</span>
+                <Icon name='building'/>
+                <span>{e.name}</span>
+              </Item.Meta>
+              <Item.Meta>
+                <Icon name='calendar'/>
                 <span>{formattedDate(e.startedAt) + ' - ' + formattedDate(e.endedAt)}</span>
               </Item.Meta>
               <Item.Description>{e.description}</Item.Description>
@@ -40,6 +44,4 @@ const Experience = ({ data }: ChildDataProps<IExperienceResponse>) => {
   )
 }
 
-export default compose(
-  withExperience(),
-)(Experience)
+export default Experience

@@ -1,18 +1,16 @@
 import moment from 'moment'
-// tslint:disable:no-console
 import * as React from 'react'
-import { ChildDataProps } from 'react-apollo'
-import { compose } from 'recompose'
 
-import { Item, Label } from 'semantic-ui-react'
-import { withEducation } from '../enhancers/graphql'
+import { Icon, Item, Label } from 'semantic-ui-react'
 import '../styles/App.css'
+
+interface IEducationProps {
+  educations: [IEducation]
+}
 
 const formattedDate = (date: string) => moment(date).format('MMM YYYY')
 
-const Education = ({ data }: ChildDataProps<IEducationResponse>) => {
-  const { educations } = data
-  console.log(educations)
+const Education = ({ educations }: IEducationProps) => {
   return (
     <div>
       {educations && educations.map(e =>
@@ -22,6 +20,7 @@ const Education = ({ data }: ChildDataProps<IEducationResponse>) => {
             <Item.Content verticalAlign='middle'>
               <Item.Header as='a'>{e.name}</Item.Header>
               <Item.Meta>
+                <Icon name='calendar'/>
                 <span>{formattedDate(e.startedAt) + ' - ' + formattedDate(e.endedAt)}</span>
               </Item.Meta>
               <Item.Description>{e.description}</Item.Description>
@@ -38,6 +37,4 @@ const Education = ({ data }: ChildDataProps<IEducationResponse>) => {
   )
 }
 
-export default compose(
-  withEducation(),
-)(Education)
+export default Education

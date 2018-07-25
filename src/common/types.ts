@@ -3,9 +3,13 @@ interface IWork {
   name: string,
 }
 
-interface IWorkResponse {
+interface IAllDataResponse {
   data: {
     works: [IWork]
+    educations: [IEducation],
+    certificates: [ICertificate],
+    experiences: [IExperience],
+    mes: [IMe],
   }
 }
 
@@ -20,20 +24,8 @@ interface IExperience {
   endedAt?: string
 }
 
-interface IExperienceResponse {
-  data: {
-    experiences: [IExperience]
-  }
-}
-
 interface IImage {
   url: string
-}
-
-interface IEducationResponse {
-  data: {
-    educations: [IEducation]
-  }
 }
 
 interface IEducation {
@@ -46,14 +38,18 @@ interface IEducation {
   endedAt: string
 }
 
-interface ICertificateResponse {
-  data: {
-    certificates: [ICertificate]
-  }
-}
-
 interface ICertificate {
   name: string,
+  certificateType: string,
   startedAt: string,
   endedAt: string
+}
+
+interface IMe {
+  name: string,
+  title: string,
+  intro: string,
+  location: string,
+  birthday: string,
+  image: IImage,
 }

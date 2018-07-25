@@ -1,23 +1,32 @@
+import * as R from 'ramda'
 // tslint:disable:no-console
 import * as React from 'react'
-import { ChildDataProps } from 'react-apollo'
-import { compose } from 'recompose'
-
-import { List } from 'semantic-ui-react'
-import { withCertificate } from '../enhancers/graphql'
+import { Divider, Header, List } from 'semantic-ui-react'
 import '../styles/App.css'
 
-const Certificate = ({ data }: ChildDataProps<ICertificateResponse>) => {
-  const { certificates } = data
+interface ICertificateProps {
+  certificates: [ICertificate]
+}
+
+const Certificate = ({ certificates }: ICertificateProps) => {
+  const certMap = R.groupBy((c: ICertificate) => c.certificateType)(certificates)
+  const certTypes = R.keys(certMap)
+  console.log(certMap)
   return (
-    <List bulleted>
-      {certificates && certificates.map(e =>
-        <List.Item key={e.name}>{e.name}</List.Item>
+    <div>
+      {certTypes && certTypes.map((key) =>
+        <span key={key}>
+          <Header size='medium'>{key}</Header>
+          <List bulleted>
+            {certMap[key].map((c: ICertificate) =>
+              <List.Item key={c.name}>{c.name}</List.Item>
+            )}
+          </List>
+          <Divider hidden/>
+        </span>
       )}
-    </List>
+    </div>
   )
 }
 
-export default compose(
-  withCertificate(),
-)(Certificate)
+export default Certificate
