@@ -12,7 +12,7 @@ const formattedDate = (date: string) => moment(date).format('MMM YYYY')
 
 const Education = ({ educations }: IEducationProps) => {
   return (
-    <div>
+    <React.Fragment>
       {educations && educations.map(e =>
         <Item.Group divided key={e.name}>
           <Item>
@@ -33,7 +33,7 @@ const Education = ({ educations }: IEducationProps) => {
           </Item>
         </Item.Group>
       )}
-    </div>
+    </React.Fragment>
   )
 }
 

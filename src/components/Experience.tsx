@@ -15,7 +15,7 @@ const formattedDate = (date?: string) => {
 
 const Experience = ({ experiences }: IExperienceProps) => {
   return (
-    <div>
+    <React.Fragment>
       {experiences && experiences.map(e =>
         <Item.Group divided key={e.name}>
           <Item>
@@ -40,7 +40,7 @@ const Experience = ({ experiences }: IExperienceProps) => {
           </Item>
         </Item.Group>
       )}
-    </div>
+    </React.Fragment>
   )
 }
 

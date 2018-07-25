@@ -1,5 +1,4 @@
 import * as R from 'ramda'
-// tslint:disable:no-console
 import * as React from 'react'
 import { Divider, Header, List } from 'semantic-ui-react'
 import '../styles/App.css'
@@ -11,9 +10,8 @@ interface ICertificateProps {
 const Certificate = ({ certificates }: ICertificateProps) => {
   const certMap = R.groupBy((c: ICertificate) => c.certificateType)(certificates)
   const certTypes = R.keys(certMap)
-  console.log(certMap)
   return (
-    <div>
+    <React.Fragment>
       {certTypes && certTypes.map((key) =>
         <span key={key}>
           <Header size='medium'>{key}</Header>
@@ -25,7 +23,7 @@ const Certificate = ({ certificates }: ICertificateProps) => {
           <Divider hidden/>
         </span>
       )}
-    </div>
+    </React.Fragment>
   )
 }
 

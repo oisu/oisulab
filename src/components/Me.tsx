@@ -1,4 +1,3 @@
-// tslint:disable:no-console
 import * as React from 'react'
 
 import { Card, Icon, Image } from 'semantic-ui-react'
@@ -9,7 +8,6 @@ interface IMeProps {
 }
 
 const Me = ({ me }: IMeProps) => {
-  console.log(me)
   return (
     <Card centered>
       <Image src={me.image.url}/>
