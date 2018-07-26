@@ -2,6 +2,28 @@ import gql from 'graphql-tag'
 
 export const getAllQuery = gql`
   query GetAllQuery {
+    sites {
+      name
+      logo {
+        url
+      }
+      coverImage {
+        url
+      }
+      caption
+      subCaption
+      catchphrase
+    }
+    socials {
+      name
+      iconName
+      url
+    }
+    businesses {
+      name
+      iconName
+      description
+    }
     mes {
       name
       title
@@ -20,11 +42,7 @@ export const getAllQuery = gql`
       name
       description
       image {
-        fileName
-        handle
         url
-        mimeType
-        size
       }
       jobTitle
       techStack

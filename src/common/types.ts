@@ -16,7 +16,33 @@ interface IAllDataResponse {
     certificates: [ICertificate],
     experiences: [IExperience],
     mes: [IMe],
+    sites: [ISite],
+    socials: [ISocial],
+    businesses: [IBusiness],
   }
+}
+
+interface ISite {
+  name: string,
+  logo: IImage,
+  coverImage: IImage,
+  caption: string,
+  subCaption: string,
+  catchphrase: string,
+}
+
+interface ISocial {
+  name: string,
+  // @ts-ignore
+  iconName: SemanticICONS,
+  url: string,
+}
+
+interface IBusiness {
+  name: string,
+  // @ts-ignore
+  iconName: SemanticICONS,
+  description: string,
 }
 
 interface IExperience {

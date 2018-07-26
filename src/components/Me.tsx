@@ -1,12 +1,15 @@
+import moment from 'moment'
 import * as React from 'react'
 
 import { Card, Icon, Image } from 'semantic-ui-react'
+import Social from './Social'
 
 interface IMeProps {
-  me: IMe
+  me: IMe,
+  socials: [ISocial]
 }
 
-const Me = ({ me }: IMeProps) => {
+const Me = ({ me, socials }: IMeProps) => {
   return (
     <Card centered>
       <Image src={me.image.url}/>
@@ -27,9 +30,12 @@ const Me = ({ me }: IMeProps) => {
         <div>
           <a>
             <Icon name='birthday cake'/>
-            Born on May 24, 1984
+            Born on {moment(me.birthday).format('MMM DD, YYYY')}
           </a>
         </div>
+      </Card.Content>
+      <Card.Content extra>
+        <Social socials={socials} inverted={false}/>
       </Card.Content>
     </Card>
   )

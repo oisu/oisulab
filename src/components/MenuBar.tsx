@@ -3,22 +3,36 @@ import { Link } from 'react-router-dom'
 
 import { Container, Image, Menu } from 'semantic-ui-react'
 import { openChat } from '../common/util'
-import Logo from '../images/logo.png'
 import { color } from '../styles/theme'
 
-const MenuBar = () => (
-  <Menu inverted fixed='top' style={{ background: color.primary }}>
-    <Container>
-      <Menu.Item as={Link} to='/' header active={false}>
-        <Image size='mini' src={Logo} style={{ marginRight: '1.5em' }}/>
-        Oisu Lab
-      </Menu.Item>
-      <Menu.Item as={Link} to='/'>Home</Menu.Item>
-      <Menu.Item as={Link} to='/about'>About</Menu.Item>
-      <Menu.Item as={Link} to='/work'>My Works</Menu.Item>
-      <Menu.Item as='a' onClick={openChat}>Contact</Menu.Item>
-    </Container>
-  </Menu>
-)
+interface IMenuBarProps {
+  sites: [ISite],
+}
+
+const styles = {
+  logo: {
+    marginRight: '1.5em'
+  },
+  root: {
+    background: color.primary,
+  }
+}
+
+const MenuBar = ({ sites }: IMenuBarProps) => {
+  const site = sites[0]
+  return (
+    <Menu inverted fixed='top' style={styles.root}>
+      <Container>
+        <Menu.Item as={Link} to='/' header active={false}>
+          <Image size='mini' src={site.logo.url} style={styles.logo}/>
+          {site.name}
+        </Menu.Item>
+        <Menu.Item as={Link} to='/about'>About</Menu.Item>
+        <Menu.Item as={Link} to='/work'>My Works</Menu.Item>
+        <Menu.Item as='a' onClick={openChat}>Contact</Menu.Item>
+      </Container>
+    </Menu>
+  )
+}
 
 export default MenuBar

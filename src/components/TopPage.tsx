@@ -1,19 +1,25 @@
 // tslint:disable:no-console
 import * as React from 'react'
 
-import { Divider, Grid, Header, Icon, Image, List, Segment } from 'semantic-ui-react'
-import Cover from '../images/cover.jpg'
-import Me from '../images/me.jpg'
+import { Divider, Grid, Header, Icon, Image, Segment } from 'semantic-ui-react'
+
+import * as shortid from 'shortid'
+import Social from './Social'
 
 export interface ITopPageProps {
-  mes: [IMe]
+  mes: [IMe],
+  sites: [ISite],
+  socials: [ISocial],
+  businesses: [IBusiness],
 }
 
 const styles = {
+  businessName: {
+    marginBottom: 10
+  },
   cover: {
     alignItems: 'center',
-    background: `url(${Cover})`,
-    backgroundPosition: 'center  center',
+    backgroundPosition: 'center center',
     backgroundRepeat: 'no-repeat',
     backgroundSize: 'cover',
     display: 'flex',
@@ -32,9 +38,6 @@ const styles = {
     paddingBottom: 0,
     paddingTop: 0,
   },
-  introInner: {
-    // maxWidth: '50%',
-  },
   root: {
     padding: 0,
   },
@@ -49,39 +52,32 @@ const styles = {
   },
 }
 
-const TopPage = ({ mes }: ITopPageProps) => {
-  console.log(mes)
+const TopPage = ({ businesses, mes, sites, socials }: ITopPageProps) => {
+  const me = mes && mes[0]
+  const site = sites && sites[0]
+  const coverStyle = {
+    background: `url(${site.coverImage.url})`
+  }
   return (
     <Segment basic padded={false} className='full-width' style={styles.root}>
-
-      <div style={styles.cover}>
+      <div style={{ ...coverStyle, ...styles.cover }}>
         <div>
-          <Image src={Me} circular centered size='tiny'/>
+          <Image src={me && me.image.url} circular centered size='tiny'/>
           <Header size='large' textAlign='center'>
-            I'm Hiroaki Miura.
+            {site.caption}
           </Header>
           <Header.Subheader size='large' textalign='center'>
-            A Startup-minded Developer based in Tokyo.
+            {site.subCaption}
           </Header.Subheader>
         </div>
       </div>
-
       <Segment basic style={styles.intro}>
-        <div style={styles.introInner}>
-          <Header size='large' inverted textAlign='center'>
-            A Startup-minded Developer,
-            A Professional Freelancer,
-            10+ years experience in development of
-            both Front-end and Back-end
-          </Header>
-          <Segment basic textAlign='center'>
-            <List horizontal inverted>
-              <List.Item as='a'><List.Icon name='twitter square'/>Twitter</List.Item>
-              <List.Item as='a'><List.Icon name='linkedin'/>LinkedIn</List.Item>
-              <List.Item as='a'><List.Icon name='github square'/>Github</List.Item>
-            </List>
-          </Segment>
-        </div>
+        <Header size='large' inverted textAlign='center'>
+          {site.catchphrase}
+        </Header>
+        <Segment basic textAlign='center'>
+          <Social socials={socials} inverted/>
+        </Segment>
       </Segment>
 
       <Segment basic style={styles.whatIDo}>
@@ -89,43 +85,24 @@ const TopPage = ({ mes }: ITopPageProps) => {
         <Header size='large' textAlign='center'>
           <Divider hidden/>
           What I do
+          <Divider hidden/>
         </Header>
 
         <Grid columns={3} divided container stackable centered>
           <Grid.Row>
-            <Grid.Column textAlign='center'>
-              <Header as='h2' icon>
-                <Icon name='world'/>
-                <Header.Content>
-                Web
-                </Header.Content>
-                <Header.Subheader>
-                  Static Website / SPA / PWA / React / Redux / GraphQL
-                </Header.Subheader>
-              </Header>
-            </Grid.Column>
-            <Grid.Column textAlign='center'>
-              <Header as='h2' icon>
-                <Icon name='mobile'/>
-                <Header.Content>
-                Mobile
-                </Header.Content>
-                <Header.Subheader>
-                  React Native / iOS / Android / Firebase
-                </Header.Subheader>
-              </Header>
-            </Grid.Column>
-            <Grid.Column textAlign='center'>
-              <Header as='h2' icon>
-                <Icon name='user'/>
-                <Header.Content>
-                Consulting
-                </Header.Content>
-                <Header.Subheader>
-                  System Architecture / Code Review / General Consulting
-                </Header.Subheader>
-              </Header>
-            </Grid.Column>
+            {businesses && businesses.map(b =>
+              <Grid.Column textAlign='center' key={shortid.generate()}>
+                <Header as='h2' icon>
+                  <Icon name={b.iconName}/>
+                  <Header.Content style={styles.businessName}>
+                    {b.name}
+                  </Header.Content>
+                  <Header.Subheader>
+                    {b.description}
+                  </Header.Subheader>
+                </Header>
+              </Grid.Column>
+            )}
           </Grid.Row>
         </Grid>
       </Segment>

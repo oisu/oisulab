@@ -12,9 +12,10 @@ export interface IAboutPageProps {
   educations: [IEducation]
   experiences: [IExperience]
   mes: [IMe]
+  socials: [ISocial]
 }
 
-const AboutPage = ({ certificates, educations, experiences, mes }: IAboutPageProps) => {
+const AboutPage = ({ certificates, educations, experiences, mes, socials }: IAboutPageProps) => {
   const me = mes && mes[0]
   return (
     <Container text style={{ marginTop: '6em' }}>
@@ -25,7 +26,7 @@ const AboutPage = ({ certificates, educations, experiences, mes }: IAboutPagePro
         <Divider hidden/>
       </Header>
 
-      {me && <Me me={me}/>}
+      {me && <Me me={me} socials={socials}/>}
 
       <Header as='h1'>
         <Divider hidden/>

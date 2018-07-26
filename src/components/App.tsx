@@ -13,18 +13,35 @@ import MenuBar from './MenuBar'
 import TopPage from './TopPage'
 import WorkPage from './WorkPage'
 
-const App = ({ data: { certificates, educations, experiences, mes, works } }: ChildDataProps<IAllDataResponse>) => {
+const App = (props: ChildDataProps<IAllDataResponse>) => {
+  const {
+    data: {
+      businesses,
+      certificates,
+      educations,
+      experiences,
+      mes,
+      works,
+      sites,
+      socials,
+    }
+  } = props
   const aboutProps = {
     certificates,
     educations,
     experiences,
-    mes
+    mes,
+    sites,
+    socials,
   }
   const workProps = {
-    works
+    works,
   }
   const topProps = {
-    mes
+    businesses,
+    mes,
+    sites,
+    socials,
   }
   const renderTop = () => <TopPage {...topProps} />
   const renderAbout = () => <AboutPage {...aboutProps} />
@@ -32,7 +49,7 @@ const App = ({ data: { certificates, educations, experiences, mes, works } }: Ch
   return (
     <Router>
       <React.Fragment>
-        <MenuBar/>
+        <MenuBar sites={sites}/>
         <React.Fragment>
           <Route exact path='/' render={renderTop}/>
           <Route exact path='/about' render={renderAbout}/>
