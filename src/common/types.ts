@@ -5,8 +5,10 @@ interface Window {
 }
 
 interface IWork {
-  url: string,
   name: string,
+  description: string,
+  logo: IImage,
+  url: string,
 }
 
 interface IAllDataResponse {

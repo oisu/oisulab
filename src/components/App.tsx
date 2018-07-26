@@ -42,6 +42,7 @@ const App = (props: ChildDataProps<IAllDataResponse>) => {
     mes,
     sites,
     socials,
+    works,
   }
   const renderTop = () => <TopPage {...topProps} />
   const renderAbout = () => <AboutPage {...aboutProps} />

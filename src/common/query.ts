@@ -37,6 +37,10 @@ export const getAllQuery = gql`
     works {
       url
       name
+      logo {
+        url
+      }
+      description
     }
     experiences (orderBy: startedAt_DESC) {
       name

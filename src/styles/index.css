@@ -9,3 +9,7 @@ body {
   margin-left: 0 !important;
   margin-right: 0 !important;
 }
+
+.item-icon {
+  max-height: 160px !important;
+}

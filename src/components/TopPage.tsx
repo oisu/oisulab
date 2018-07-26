@@ -5,12 +5,14 @@ import { Divider, Grid, Header, Icon, Image, Segment } from 'semantic-ui-react'
 
 import * as shortid from 'shortid'
 import Social from './Social'
+import Work from './Work'
 
 export interface ITopPageProps {
   mes: [IMe],
   sites: [ISite],
   socials: [ISocial],
   businesses: [IBusiness],
+  works: [IWork],
 }
 
 const styles = {
@@ -50,9 +52,14 @@ const styles = {
     paddingBottom: 0,
     paddingTop: 0,
   },
+  works: {
+    minHeight: 600,
+    paddingBottom: 0,
+    paddingTop: 0,
+  }
 }
 
-const TopPage = ({ businesses, mes, sites, socials }: ITopPageProps) => {
+const TopPage = ({ businesses, mes, sites, socials, works }: ITopPageProps) => {
   const me = mes && mes[0]
   const site = sites && sites[0]
   const coverStyle = {
@@ -105,6 +112,16 @@ const TopPage = ({ businesses, mes, sites, socials }: ITopPageProps) => {
             )}
           </Grid.Row>
         </Grid>
+      </Segment>
+
+      <Segment basic style={styles.works}>
+        <Header size='large' textAlign='center'>
+          <Divider hidden/>
+          Recent Works
+          <Divider hidden/>
+        </Header>
+
+        <Work works={works}/>
       </Segment>
 
     </Segment>
