@@ -1,7 +1,6 @@
 import * as R from 'ramda'
 import * as React from 'react'
 import { Divider, Header, List } from 'semantic-ui-react'
-import '../styles/App.css'
 
 interface ICertificateProps {
   certificates: [ICertificate]

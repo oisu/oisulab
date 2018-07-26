@@ -2,18 +2,17 @@ import * as React from 'react'
 import { Link } from 'react-router-dom'
 
 import { Container, Image, List, Segment } from 'semantic-ui-react'
-import { color } from '../common/theme'
 import { openChat } from '../common/util'
+import { color } from '../styles/theme'
 
 const styles = {
   listItem: {
-    borderColor: '#fff',
-    color: '#fff',
+    color: 'rgba(255,255,255,.9)',
   },
   root: {
     background: color.primary,
-    margin: '5em 0em 0em',
-    padding: '5em 0em'
+    margin: '2em 0em 0em',
+    padding: '3em 0em'
   },
 }
 

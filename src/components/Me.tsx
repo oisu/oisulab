@@ -1,7 +1,6 @@
 import * as React from 'react'
 
 import { Card, Icon, Image } from 'semantic-ui-react'
-import '../styles/App.css'
 
 interface IMeProps {
   me: IMe

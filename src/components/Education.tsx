@@ -2,7 +2,6 @@ import moment from 'moment'
 import * as React from 'react'
 
 import { Icon, Item, Label } from 'semantic-ui-react'
-import '../styles/App.css'
 
 interface IEducationProps {
   educations: [IEducation]

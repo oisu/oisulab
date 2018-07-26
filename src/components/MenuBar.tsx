@@ -1,11 +1,10 @@
-// tslint:disable:no-console
 import * as React from 'react'
 import { Link } from 'react-router-dom'
 
 import { Container, Image, Menu } from 'semantic-ui-react'
-import { color } from '../common/theme'
 import { openChat } from '../common/util'
 import Logo from '../images/logo.png'
+import { color } from '../styles/theme'
 
 const MenuBar = () => (
   <Menu inverted fixed='top' style={{ background: color.primary }}>

@@ -6,11 +6,11 @@ import { compose } from 'recompose'
 import 'semantic-ui-css/semantic.min.css'
 import { withAllData } from '../enhancers/graphql'
 import { renderWhileLoading } from '../enhancers/navigation'
-import '../styles/App.css'
 import AboutPage from './AboutPage'
 import Footer from './Footer'
 import Loading from './Loading'
 import MenuBar from './MenuBar'
+import TopPage from './TopPage'
 import WorkPage from './WorkPage'
 
 const App = ({ data: { certificates, educations, experiences, mes, works } }: ChildDataProps<IAllDataResponse>) => {
@@ -23,6 +23,10 @@ const App = ({ data: { certificates, educations, experiences, mes, works } }: Ch
   const workProps = {
     works
   }
+  const topProps = {
+    mes
+  }
+  const renderTop = () => <TopPage {...topProps} />
   const renderAbout = () => <AboutPage {...aboutProps} />
   const renderWork = () => <WorkPage {...workProps} />
   return (
@@ -30,7 +34,7 @@ const App = ({ data: { certificates, educations, experiences, mes, works } }: Ch
       <React.Fragment>
         <MenuBar/>
         <React.Fragment>
-          <Route exact path='/' render={renderAbout}/>
+          <Route exact path='/' render={renderTop}/>
           <Route exact path='/about' render={renderAbout}/>
           <Route exact path='/work' render={renderWork}/>
         </React.Fragment>
