@@ -26,16 +26,17 @@ const App = ({ data: { certificates, educations, experiences, mes, works } }: Ch
   const renderAbout = () => <AboutPage {...aboutProps} />
   const renderWork = () => <WorkPage {...workProps} />
   return (
-    <React.Fragment>
-      <MenuBar/>
-      <Router>
+    <Router>
+      <React.Fragment>
+        <MenuBar/>
         <React.Fragment>
           <Route exact path='/' render={renderAbout}/>
+          <Route exact path='/about' render={renderAbout}/>
           <Route exact path='/work' render={renderWork}/>
         </React.Fragment>
-      </Router>
-      <Footer/>
-    </React.Fragment>
+        <Footer/>
+      </React.Fragment>
+    </Router>
   )
 }
 

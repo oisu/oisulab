@@ -1,25 +1,25 @@
+// tslint:disable:no-console
 import * as React from 'react'
+import { Link } from 'react-router-dom'
 
-import { Container, Image, Menu, MenuProps } from 'semantic-ui-react'
-import styled, { StyledComponentClass } from 'styled-components'
+import { Container, Image, Menu } from 'semantic-ui-react'
+import { color } from '../common/theme'
+import { openChat } from '../common/util'
 import Logo from '../images/logo.png'
 
-const StyledMenu = styled(Menu)`
-  background-color: #5e502a !important;
-`as StyledComponentClass<MenuProps, {}>
-
 const MenuBar = () => (
-  <StyledMenu inverted fixed='top'>
+  <Menu inverted fixed='top' style={{ background: color.primary }}>
     <Container>
-      <Menu.Item as='a' header>
+      <Menu.Item as={Link} to='/' header active={false}>
         <Image size='mini' src={Logo} style={{ marginRight: '1.5em' }}/>
         Oisu Lab
       </Menu.Item>
-      <Menu.Item as='a'>About</Menu.Item>
-      <Menu.Item as='a'>Works</Menu.Item>
-      <Menu.Item as='a'>Contact</Menu.Item>
+      <Menu.Item as={Link} to='/'>Home</Menu.Item>
+      <Menu.Item as={Link} to='/about'>About</Menu.Item>
+      <Menu.Item as={Link} to='/work'>My Works</Menu.Item>
+      <Menu.Item as='a' onClick={openChat}>Contact</Menu.Item>
     </Container>
-  </StyledMenu>
+  </Menu>
 )
 
 export default MenuBar

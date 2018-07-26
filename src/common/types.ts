@@ -1,3 +1,9 @@
+interface Window {
+  fcWidget: {
+    open (): void
+  }
+}
+
 interface IWork {
   url: string,
   name: string,

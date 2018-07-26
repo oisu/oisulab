@@ -13,12 +13,12 @@ const WorkPage = ({ works }: IWorkPageProps) => {
     <Container text style={{ marginTop: '6em' }}>
 
       <Header as='h2'>
-        <Header.Content>My Work</Header.Content>
+        <Header.Content>My Works</Header.Content>
         <Divider/>
         <Divider hidden/>
       </Header>
 
-      Work
+      Works
 
     </Container>
   )
