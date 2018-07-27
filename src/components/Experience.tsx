@@ -3,6 +3,7 @@ import moment from 'moment'
 import * as React from 'react'
 
 import { Divider, Icon, Item, Label } from 'semantic-ui-react'
+import * as shortid from 'shortid'
 
 interface IExperienceProps {
   experiences: [IExperience]
@@ -16,7 +17,7 @@ const Experience = ({ experiences }: IExperienceProps) => {
   return (
     <React.Fragment>
       {experiences && experiences.map(e =>
-        <React.Fragment key={e.name}>
+        <React.Fragment key={shortid.generate()}>
           <Item.Group divided>
             <Item>
               <Item.Image src={e.image.url} size='tiny'/>
@@ -33,7 +34,7 @@ const Experience = ({ experiences }: IExperienceProps) => {
                 <Item.Description>{e.description}</Item.Description>
                 <Item.Extra>
                   {e.techStack.split(',').map(t =>
-                    <Label key={t}>{t}</Label>
+                    <Label key={shortid.generate()}>{t}</Label>
                   )}
                 </Item.Extra>
               </Item.Content>

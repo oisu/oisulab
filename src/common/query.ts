@@ -4,6 +4,7 @@ export const getAllQuery = gql`
   query GetAllQuery {
     sites {
       name
+      description
       logo {
         url
       }

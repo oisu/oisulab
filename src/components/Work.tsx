@@ -29,7 +29,7 @@ const Work = ({ works }: IWorkProps) => {
                 <Item.Description>{w.description}</Item.Description>
                 <Item.Extra>
                   {w.techStack.split(',').map(t =>
-                    <Label key={t}>{t}</Label>
+                    <Label key={shortid.generate()}>{t}</Label>
                   )}
                 </Item.Extra>
               </Item.Content>

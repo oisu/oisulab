@@ -52,12 +52,18 @@ const App = (props: ChildDataProps<IAllDataResponse>) => {
   const renderAbout = () => <AboutPage {...aboutProps} />
   const renderWork = () => <WorkPage {...workProps} />
 
+  const site = sites[0]
+  const me = mes[0]
+
   return (
     <Router>
       <ScrollToTop>
         <Helmet>
           <meta charSet='utf-8'/>
-          <title>Oisu Lab</title>
+          <meta property='og:image' content={site.logo.url} />
+          <meta property='og:description' content={site.description} />
+          <meta property='og:author' content={me.name} />
+          <title>{site.name}</title>
         </Helmet>
         <MenuBar sites={sites}/>
         <React.Fragment>
