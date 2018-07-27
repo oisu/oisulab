@@ -59,18 +59,36 @@ const App = (props: ChildDataProps<IAllDataResponse>) => {
     <Router>
       <ScrollToTop>
         <Helmet>
-          <meta charSet='utf-8'/>
-          <meta property='og:image' content={site.logo.url} />
-          <meta property='og:description' content={site.description} />
-          <meta property='og:author' content={me.name} />
           <title>{site.name}</title>
+          <meta charSet='utf-8'/>
+          <meta name='description' content={site.description}/>
+          <meta name='author' content={me.name}/>
+          <meta name='url' content={site.url}/>
+
+          <meta itemProp='name' content={site.name}/>
+          <meta itemProp='description' content={site.description}/>
+          <meta itemProp='image' content={site.logo.url}/>
+
+          <meta name='og:url' content={site.url}/>
+          <meta name='og:type' content='profile'/>
+          <meta name='og:title' content={site.name}/>
+          <meta name='og:description' content={site.description}/>
+          <meta name='og:image' content={site.logo.url}/>
+
+          <meta name='twitter:card' content='summary_large_image'/>
+          <meta name='twitter:title' content={site.name}/>
+          <meta name='twitter:description' content={site.description}/>
+          <meta name='twitter:image' content={site.logo.url}/>
         </Helmet>
+
         <MenuBar sites={sites}/>
+
         <React.Fragment>
           <Route exact path='/' render={renderTop}/>
           <Route exact path='/about' render={renderAbout}/>
           <Route exact path='/work' render={renderWork}/>
         </React.Fragment>
+
         <Footer/>
       </ScrollToTop>
     </Router>

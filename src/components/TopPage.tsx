@@ -60,8 +60,8 @@ const styles = {
 }
 
 const TopPage = ({ businesses, mes, sites, socials, works }: ITopPageProps) => {
-  const me = mes && mes[0]
-  const site = sites && sites[0]
+  const me = mes[0]
+  const site = sites[0]
   const coverStyle = {
     background: `url(${site.coverImage.url})`
   }
@@ -99,7 +99,7 @@ const TopPage = ({ businesses, mes, sites, socials, works }: ITopPageProps) => {
 
         <Grid columns={3} divided container stackable centered>
           <Grid.Row>
-            {businesses && businesses.map(b =>
+            {businesses.map(b =>
               <Grid.Column textAlign='center' key={shortid.generate()}>
                 <Header as='h2' icon>
                   <Icon name={b.iconName}/>
