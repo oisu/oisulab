@@ -1,6 +1,7 @@
 // tslint:disable:no-console
 import * as React from 'react'
 import { ChildDataProps } from 'react-apollo'
+import { Helmet } from 'react-helmet'
 import { BrowserRouter as Router, Route } from 'react-router-dom'
 import { compose } from 'recompose'
 import 'semantic-ui-css/semantic.min.css'
@@ -10,6 +11,7 @@ import AboutPage from './AboutPage'
 import Footer from './Footer'
 import Loading from './Loading'
 import MenuBar from './MenuBar'
+import ScrollToTop from './ScrollToTop'
 import TopPage from './TopPage'
 import WorkPage from './WorkPage'
 
@@ -26,6 +28,7 @@ const App = (props: ChildDataProps<IAllDataResponse>) => {
       socials,
     }
   } = props
+
   const aboutProps = {
     certificates,
     educations,
@@ -44,12 +47,18 @@ const App = (props: ChildDataProps<IAllDataResponse>) => {
     socials,
     works,
   }
+
   const renderTop = () => <TopPage {...topProps} />
   const renderAbout = () => <AboutPage {...aboutProps} />
   const renderWork = () => <WorkPage {...workProps} />
+
   return (
     <Router>
-      <React.Fragment>
+      <ScrollToTop>
+        <Helmet>
+          <meta charSet='utf-8'/>
+          <title>Oisu Lab</title>
+        </Helmet>
         <MenuBar sites={sites}/>
         <React.Fragment>
           <Route exact path='/' render={renderTop}/>
@@ -57,7 +66,7 @@ const App = (props: ChildDataProps<IAllDataResponse>) => {
           <Route exact path='/work' render={renderWork}/>
         </React.Fragment>
         <Footer/>
-      </React.Fragment>
+      </ScrollToTop>
     </Router>
   )
 }

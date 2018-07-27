@@ -9,6 +9,7 @@ interface IWork {
   description: string,
   logo: IImage,
   url: string,
+  techStack: string,
 }
 
 interface IAllDataResponse {

@@ -15,41 +15,49 @@ export interface IAboutPageProps {
   socials: [ISocial]
 }
 
+const styles = {
+  root: {
+    marginTop: '6em',
+  }
+}
+
 const AboutPage = ({ certificates, educations, experiences, mes, socials }: IAboutPageProps) => {
   const me = mes && mes[0]
   return (
-    <Container text style={{ marginTop: '6em' }}>
+    <Container text style={styles.root}>
 
       <Header as='h2'>
         <Header.Content>About Me</Header.Content>
-        <Divider/>
         <Divider hidden/>
       </Header>
 
-      {me && <Me me={me} socials={socials}/>}
+      <Me me={me} socials={socials}/>
+
+      <Divider hidden/>
 
       <Header as='h1'>
         <Divider hidden/>
         <Header.Content>Experiences</Header.Content>
-        <Divider/>
         <Divider hidden/>
       </Header>
 
       <Experience experiences={experiences}/>
 
+      <Divider hidden/>
+
       <Header as='h1'>
         <Divider hidden/>
         <Header.Content>Educations</Header.Content>
-        <Divider/>
         <Divider hidden/>
       </Header>
 
       <Education educations={educations}/>
 
+      <Divider hidden/>
+
       <Header as='h1'>
         <Divider hidden/>
         <Header.Content>Certificates</Header.Content>
-        <Divider/>
         <Divider hidden/>
       </Header>
 

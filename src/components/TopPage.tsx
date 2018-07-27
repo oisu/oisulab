@@ -1,7 +1,7 @@
 // tslint:disable:no-console
 import * as React from 'react'
 
-import { Divider, Grid, Header, Icon, Image, Segment } from 'semantic-ui-react'
+import { Container, Divider, Grid, Header, Icon, Image, Segment } from 'semantic-ui-react'
 
 import * as shortid from 'shortid'
 import Social from './Social'
@@ -78,17 +78,19 @@ const TopPage = ({ businesses, mes, sites, socials, works }: ITopPageProps) => {
           </Header.Subheader>
         </div>
       </div>
+
       <Segment basic style={styles.intro}>
-        <Header size='large' inverted textAlign='center'>
-          {site.catchphrase}
-        </Header>
+        <Container basic text>
+          <Header size='large' inverted textAlign='center'>
+            {site.catchphrase}
+          </Header>
+        </Container>
         <Segment basic textAlign='center'>
           <Social socials={socials} inverted/>
         </Segment>
       </Segment>
 
-      <Segment basic style={styles.whatIDo}>
-
+      <Container text basic style={styles.whatIDo}>
         <Header size='large' textAlign='center'>
           <Divider hidden/>
           What I do
@@ -112,9 +114,11 @@ const TopPage = ({ businesses, mes, sites, socials, works }: ITopPageProps) => {
             )}
           </Grid.Row>
         </Grid>
-      </Segment>
+      </Container>
 
-      <Segment basic style={styles.works}>
+      <Divider hidden/>
+
+      <Container text style={styles.works}>
         <Header size='large' textAlign='center'>
           <Divider hidden/>
           Recent Works
@@ -122,7 +126,7 @@ const TopPage = ({ businesses, mes, sites, socials, works }: ITopPageProps) => {
         </Header>
 
         <Work works={works}/>
-      </Segment>
+      </Container>
 
     </Segment>
   )

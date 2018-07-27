@@ -41,6 +41,7 @@ export const getAllQuery = gql`
         url
       }
       description
+      techStack
     }
     experiences (orderBy: startedAt_DESC) {
       name

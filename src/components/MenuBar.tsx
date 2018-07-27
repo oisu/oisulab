@@ -23,12 +23,12 @@ const MenuBar = ({ sites }: IMenuBarProps) => {
   return (
     <Menu inverted fixed='top' style={styles.root}>
       <Container>
-        <Menu.Item as={Link} to='/' header active={false}>
+        <Menu.Item as={Link} to='/' header style={{ background: 'none' }}>
           <Image size='mini' src={site.logo.url} style={styles.logo}/>
           {site.name}
         </Menu.Item>
         <Menu.Item as={Link} to='/about'>About</Menu.Item>
-        <Menu.Item as={Link} to='/work'>My Works</Menu.Item>
+        <Menu.Item as={Link} to='/work'>Works</Menu.Item>
         <Menu.Item as='a' onClick={openChat}>Contact</Menu.Item>
       </Container>
     </Menu>

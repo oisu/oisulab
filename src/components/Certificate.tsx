@@ -14,9 +14,11 @@ const Certificate = ({ certificates }: ICertificateProps) => {
       {certTypes && certTypes.map((key) =>
         <span key={key}>
           <Header size='medium'>{key}</Header>
-          <List bulleted>
+          <List as='ol'>
             {certMap[key].map((c: ICertificate) =>
-              <List.Item key={c.name}>{c.name}</List.Item>
+              <List.Item as='li' value='-' key={c.name}>
+                {c.name}
+              </List.Item>
             )}
           </List>
           <Divider hidden/>
