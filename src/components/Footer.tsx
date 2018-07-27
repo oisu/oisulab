@@ -26,10 +26,10 @@ const Footer = () => {
             Home
           </List.Item>
           <List.Item as={Link} to='/about' style={styles.listItem}>
-            About Us
+            About
           </List.Item>
           <List.Item as={Link} to='/work' style={styles.listItem}>
-            My Works
+            Works
           </List.Item>
           <List.Item as={Link} onClick={openChat} to='.' style={styles.listItem}>
             Contact
