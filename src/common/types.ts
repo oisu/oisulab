@@ -28,6 +28,7 @@ interface IAllDataResponse {
 interface ISite {
   name: string,
   description: string,
+  keyword: string,
   url: string,
   logo: IImage,
   coverImage: IImage,

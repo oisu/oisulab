@@ -61,8 +61,10 @@ const App = (props: ChildDataProps<IAllDataResponse>) => {
         <Helmet>
           <title>{site.name}</title>
           <meta charSet='utf-8'/>
+          <meta name='title' content={site.name}/>
           <meta name='description' content={site.description}/>
           <meta name='author' content={me.name}/>
+          <meta name='keywords' content={site.keyword}/>
           <meta name='url' content={site.url}/>
 
           <meta itemProp='name' content={site.name}/>
