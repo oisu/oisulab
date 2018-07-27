@@ -24,7 +24,7 @@ const Work = ({ works }: IWorkProps) => {
               <Item.Content verticalAlign='middle'>
                 <Item.Header as='a'>{w.name}</Item.Header>
                 <Item.Meta style={styles.url}>
-                  <a href={w.url}><u>{w.url}</u></a>
+                  <a href={w.url} target='_blank'><u>{w.url}</u></a>
                 </Item.Meta>
                 <Item.Description>{w.description}</Item.Description>
                 <Item.Extra>

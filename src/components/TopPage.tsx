@@ -17,7 +17,8 @@ export interface ITopPageProps {
 
 const styles = {
   businessName: {
-    marginBottom: 10
+    marginBottom: 10,
+    marginTop: 10,
   },
   cover: {
     alignItems: 'center',
