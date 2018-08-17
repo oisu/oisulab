@@ -37,7 +37,7 @@ const AboutPage = ({ certificates, educations, experiences, mes, socials }: IAbo
 
       <Header as='h1'>
         <Divider hidden/>
-        <Header.Content>Experiences</Header.Content>
+        <Header.Content>Experience</Header.Content>
         <Divider hidden/>
       </Header>
 
@@ -47,7 +47,7 @@ const AboutPage = ({ certificates, educations, experiences, mes, socials }: IAbo
 
       <Header as='h1'>
         <Divider hidden/>
-        <Header.Content>Educations</Header.Content>
+        <Header.Content>Education</Header.Content>
         <Divider hidden/>
       </Header>
 
