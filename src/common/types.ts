@@ -91,3 +91,7 @@ interface IMe {
   birthday: string,
   image: IImage,
 }
+
+interface ILang {
+  lang: string,
+}

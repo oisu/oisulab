@@ -1,11 +1,17 @@
+// tslint:disable:no-console
+// tslint:disable:no-debugger
 import * as React from 'react'
 import { Link } from 'react-router-dom'
 
-import { Container, Image, List, Segment } from 'semantic-ui-react'
+import { Container, Dropdown, List, Segment } from 'semantic-ui-react'
+import { LangContext } from '../common/context'
 import { openChat } from '../common/util'
 import { color } from '../styles/theme'
 
 const styles = {
+  langContainer: {
+    marginBottom: 30,
+  },
   listItem: {
     color: 'rgba(255,255,255,.9)',
   },
@@ -17,26 +23,42 @@ const styles = {
 }
 
 const Footer = () => {
+  const onLangChange = (event: React.SyntheticEvent<HTMLElement>) => {
+    debugger
+  }
   return (
-    <Segment inverted vertical style={styles.root}>
-      <Container textAlign='center'>
-        <Image centered size='mini' src=''/>
-        <List horizontal inverted divided link>
-          <List.Item as={Link} to='/' style={styles.listItem}>
-            Home
+    <LangContext.Consumer>
+      {({ lang, setLang }) => (
+        <Segment inverted vertical style={styles.root}>
+
+          <Container textAlign='center' style={styles.langContainer}>
+            <Dropdown text={lang} onChange={onLangChange}>
+              <Dropdown.Menu title=''>
+                <Dropdown.Item text='🇺🇸English' />
+                <Dropdown.Item text='🇯🇵日本語' />
+              </Dropdown.Menu>
+            </Dropdown>
+          </Container>
+
+          <Container textAlign='center'>
+            <List horizontal inverted divided link>
+              <List.Item as={Link} to='/' style={styles.listItem}>
+                Home
           </List.Item>
-          <List.Item as={Link} to='/about' style={styles.listItem}>
-            About
+              <List.Item as={Link} to='/about' style={styles.listItem}>
+                About
           </List.Item>
-          <List.Item as={Link} to='/work' style={styles.listItem}>
-            Works
+              <List.Item as={Link} to='/work' style={styles.listItem}>
+                Works
           </List.Item>
-          <List.Item as={Link} onClick={openChat} to='.' style={styles.listItem}>
-            Contact
+              <List.Item as={Link} onClick={openChat} to='.' style={styles.listItem}>
+                Contact
           </List.Item>
-        </List>
-      </Container>
-    </Segment>
+            </List>
+          </Container>
+        </Segment>
+      )}
+      </LangContext.Consumer>
   )
 }
 

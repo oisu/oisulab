@@ -12,6 +12,6 @@
     "jsx-boolean-value": false,
     "trailing-comma": true,
     "interface-name" : false,
-    "no-unused-variable": null
+    "no-unused-variable": true
   }
 }
