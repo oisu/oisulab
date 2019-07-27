@@ -2,6 +2,7 @@ import * as React from 'react'
 import { Link } from 'react-router-dom'
 
 import { Container, Image, Menu } from 'semantic-ui-react'
+import { openChat } from '../common/util'
 import { color } from '../styles/theme'
 
 interface IMenuBarProps {
@@ -31,6 +32,7 @@ const MenuBar = ({ sites }: IMenuBarProps) => {
         <Menu.Item as='a' href='https://blog.oisulab.com' target='_blank'>
           Blog
         </Menu.Item>
+        <Menu.Item as='a' onClick={openChat}>Contact</Menu.Item>
       </Container>
     </Menu>
   )
