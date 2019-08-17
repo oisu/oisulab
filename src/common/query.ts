@@ -37,7 +37,7 @@ export const getAllQuery = gql`
         url
       }
     }
-    works {
+    works (orderBy: updatedAt_DESC, where: {status: PUBLISHED}) {
       url
       name
       logo {
