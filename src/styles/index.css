@@ -17,3 +17,12 @@ body {
 .ui.items:not(.unstackable)>.item>.image.tiny, .ui.items:not(.unstackable)>.item>.image.tiny>img {
   max-width: 100px !important;
 }
+
+.ui.container {
+  -ms-overflow-style: none;
+  overflow-x: scroll;
+}
+
+.ui.container::-webkit-scrollbar {
+  display: none;
+}
