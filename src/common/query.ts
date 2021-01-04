@@ -16,6 +16,7 @@ export const getAllQuery = gql`
       caption
       subCaption
       catchphrase
+      address
     }
     socials {
       name
@@ -37,7 +38,7 @@ export const getAllQuery = gql`
         url
       }
     }
-    works (orderBy: updatedAt_DESC, where: {status: PUBLISHED}) {
+    works (orderBy: updatedAt_DESC) {
       url
       name
       logo {
@@ -45,6 +46,12 @@ export const getAllQuery = gql`
       }
       description
       techStack
+    }
+    customers (orderBy: updatedAt_DESC) {
+      logo {
+        url
+      }
+      url
     }
     experiences (orderBy: startedAt_DESC) {
       name

@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { Link } from 'react-router-dom'
 
-import { Container, Image, Menu } from 'semantic-ui-react'
+import { Container, Menu } from 'semantic-ui-react'
 import { openChat } from '../common/util'
 import { color } from '../styles/theme'
 
@@ -24,10 +24,9 @@ const MenuBar = ({ sites }: IMenuBarProps) => {
     <Menu inverted fixed='top' style={styles.root}>
       <Container>
         <Menu.Item as={Link} to='/' header style={{ background: 'none' }}>
-          <Image size='mini' src={site.logo.url} style={styles.logo}/>
           {site.name}
         </Menu.Item>
-        <Menu.Item as={Link} to='/about'>About</Menu.Item>
+        <Menu.Item as={Link} to='/team'>Team</Menu.Item>
         <Menu.Item as={Link} to='/work'>Works</Menu.Item>
         <Menu.Item as='a' href='https://blog.oisulab.com' target='_blank'>
           Blog

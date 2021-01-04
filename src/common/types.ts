@@ -20,6 +20,7 @@ interface IAllDataResponse {
     experiences: [IExperience],
     mes: [IMe],
     sites: [ISite],
+    customers: [ICustomer],
     socials: [ISocial],
     businesses: [IBusiness],
   }
@@ -35,6 +36,7 @@ interface ISite {
   caption: string,
   subCaption: string,
   catchphrase: string,
+  address: string,
 }
 
 interface ISocial {
@@ -93,5 +95,12 @@ interface IMe {
 }
 
 interface ILang {
-  lang: string,
+  key: string,
+  text: string,
+  value: string,
+}
+
+interface ICustomer {
+  logo: IImage,
+  url: string,
 }

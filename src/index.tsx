@@ -7,7 +7,7 @@ import registerServiceWorker from './registerServiceWorker'
 import './styles/index.css'
 
 const client = new ApolloClient({
-  uri: 'https://api-apeast.graphcms.com/v1/cjjscfjvl0fz801bu3tokx3po/master'
+  uri: 'https://api-ap-northeast-1.graphcms.com/v2/cjjscfjvl0fz801bu3tokx3po/master'
 })
 
 const Root = (

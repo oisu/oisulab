@@ -7,7 +7,7 @@ import Education from './Education'
 import Experience from './Experience'
 import Me from './Me'
 
-export interface IAboutPageProps {
+export interface ITeamPageProps {
   certificates: [ICertificate]
   educations: [IEducation]
   experiences: [IExperience]
@@ -21,13 +21,13 @@ const styles = {
   }
 }
 
-const AboutPage = ({ certificates, educations, experiences, mes, socials }: IAboutPageProps) => {
+const TeamPage = ({ certificates, educations, experiences, mes, socials }: ITeamPageProps) => {
   const me = mes && mes[0]
   return (
     <Container text style={styles.root}>
 
-      <Header as='h2'>
-        <Header.Content>About Me</Header.Content>
+      <Header as='h1'>
+        <Header.Content>Team</Header.Content>
         <Divider hidden/>
       </Header>
 
@@ -35,17 +35,19 @@ const AboutPage = ({ certificates, educations, experiences, mes, socials }: IAbo
 
       <Divider hidden/>
 
-      <Header as='h1'>
+      <Header as='h2'>
         <Divider hidden/>
         <Header.Content>Experience</Header.Content>
         <Divider hidden/>
       </Header>
 
+      <Divider hidden/>
+
       <Experience experiences={experiences}/>
 
       <Divider hidden/>
 
-      <Header as='h1'>
+      <Header as='h2'>
         <Divider hidden/>
         <Header.Content>Education</Header.Content>
         <Divider hidden/>
@@ -55,7 +57,7 @@ const AboutPage = ({ certificates, educations, experiences, mes, socials }: IAbo
 
       <Divider hidden/>
 
-      <Header as='h1'>
+      <Header as='h2'>
         <Divider hidden/>
         <Header.Content>Certificates</Header.Content>
         <Divider hidden/>
@@ -67,4 +69,4 @@ const AboutPage = ({ certificates, educations, experiences, mes, socials }: IAbo
   )
 }
 
-export default AboutPage
+export default TeamPage
