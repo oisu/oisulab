@@ -19,7 +19,7 @@ const WorkPage = ({ lang, works }: IWorkPageProps) => {
     <Container text style={styles.root}>
 
       <Header as='h2'>
-        <Header.Content>Past personal works</Header.Content>
+        <Header.Content>Works</Header.Content>
         <Divider hidden/>
 
       </Header>
