@@ -54,7 +54,7 @@ const Footer = ({ lang, setLang, sites }: IFooterProps) => {
           <List.Item as={Link} to='/work' style={styles.listItem}>
             <u>Works</u>
           </List.Item>
-          <List.Item as='a' href='https://blog.oisulab.com' target='_blank'>
+          <List.Item as='a' href='https://blog.oisu.jp' target='_blank'>
             <u>Blog</u>
           </List.Item>
           <List.Item as={Link} onClick={openChat} to='.' style={styles.listItem}>
