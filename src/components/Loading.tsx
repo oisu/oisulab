@@ -4,7 +4,7 @@ import { Dimmer, Loader, Segment } from 'semantic-ui-react'
 
 const styles = {
   dimmer: {
-    backgroundColor: '#5e502a',
+    backgroundColor: 'gray',
   },
   root: {
     bottom: 0,
