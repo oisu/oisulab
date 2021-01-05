@@ -5,6 +5,7 @@ import Work from './Work'
 
 export interface IWorkPageProps {
   works: [IWork]
+  lang: string
 }
 
 const styles = {
@@ -13,7 +14,7 @@ const styles = {
   }
 }
 
-const WorkPage = ({ works }: IWorkPageProps) => {
+const WorkPage = ({ lang, works }: IWorkPageProps) => {
   return (
     <Container text style={styles.root}>
 
@@ -23,7 +24,7 @@ const WorkPage = ({ works }: IWorkPageProps) => {
 
       </Header>
 
-      <Work works={works}/>
+      <Work works={works} lang={lang} />
 
     </Container>
   )

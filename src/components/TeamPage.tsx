@@ -13,6 +13,7 @@ export interface ITeamPageProps {
   experiences: [IExperience]
   mes: [IMe]
   socials: [ISocial]
+  lang: string
 }
 
 const styles = {
@@ -21,7 +22,7 @@ const styles = {
   }
 }
 
-const TeamPage = ({ certificates, educations, experiences, mes, socials }: ITeamPageProps) => {
+const TeamPage = ({ certificates, educations, experiences, lang, mes, socials }: ITeamPageProps) => {
   const me = mes && mes[0]
   return (
     <Container text style={styles.root}>
@@ -43,7 +44,7 @@ const TeamPage = ({ certificates, educations, experiences, mes, socials }: ITeam
 
       <Divider hidden/>
 
-      <Experience experiences={experiences}/>
+      <Experience experiences={experiences} lang={lang} />
 
       <Divider hidden/>
 
@@ -53,7 +54,7 @@ const TeamPage = ({ certificates, educations, experiences, mes, socials }: ITeam
         <Divider hidden/>
       </Header>
 
-      <Education educations={educations}/>
+      <Education educations={educations} lang={lang} />
 
       <Divider hidden/>
 
@@ -63,7 +64,7 @@ const TeamPage = ({ certificates, educations, experiences, mes, socials }: ITeam
         <Divider hidden/>
       </Header>
 
-      <Certificate certificates={certificates}/>
+      <Certificate certificates={certificates} lang={lang} />
 
     </Container>
   )

@@ -37,6 +37,16 @@ const styles = {
     paddingBottom: 0,
     paddingTop: 0,
   },
+  gridRow: {
+    alignItems: 'center',
+    display: 'flex',
+    justifyContent: 'center',
+  },
+  header: {
+    marginBottom: 0,
+    marginLeft: 20,
+    marginTop: 0,
+  },
   intro: {
     alignItems: 'center',
     backgroundColor: color.primary,
@@ -53,6 +63,9 @@ const styles = {
   },
   spacer: {
     height: 20,
+  },
+  subHeader: {
+    fontSize: '0.9rem',
   },
   whatWeDo: {
     alignItems: 'center',
@@ -74,15 +87,15 @@ const TopPage = ({ businesses, sites, socials, customers }: ITopPageProps) => {
     <Segment basic padded={false} className='full-width' style={styles.root}>
       <div style={{ ...coverStyle, ...styles.cover }}>
         <div>
-          <Image src={site.logo && site.logo.url} size='small' centered/>
-          <Header size='medium' centered>
+          <Image src={site.logo && site.logo.url} size='small' centered={true} />
+          <Header size='medium'>
             {site.caption}
           </Header>
         </div>
       </div>
 
-      <Container text basic style={styles.whatWeDo}>
-        <Header size='large' centered>
+      <Container text basic='true' style={styles.whatWeDo}>
+        <Header size='large'>
           <Divider hidden/>
           What we do
           <Divider hidden/>
@@ -90,16 +103,16 @@ const TopPage = ({ businesses, sites, socials, customers }: ITopPageProps) => {
 
         <Container style={styles.spacer} />
 
-        <Grid columns={3} divided container stackable centered>
+        <Grid columns={3} divided container stackable>
           <Grid.Row>
             {businesses.map(b =>
-              <Grid.Column textAlign='center' key={shortid.generate()}>
+              <Grid.Column key={shortid.generate()} style={styles.gridRow}>
                 <Icon name={b.iconName} size='huge' />
-                <Header as='h2' icon>
+                <Header as='h2' icon style={styles.header}>
                   <Header.Content style={styles.businessName}>
                     {b.name}
                   </Header.Content>
-                  <Header.Subheader>
+                  <Header.Subheader size='mini' style={styles.subHeader}>
                     {b.description}
                   </Header.Subheader>
                 </Header>
@@ -110,7 +123,7 @@ const TopPage = ({ businesses, sites, socials, customers }: ITopPageProps) => {
       </Container>
 
       <Segment basic style={styles.intro}>
-        <Container basic text>
+        <Container text>
           <Header size='large' inverted textAlign='center'>
             {site.catchphrase}
           </Header>

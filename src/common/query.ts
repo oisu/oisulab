@@ -17,6 +17,10 @@ export const getAllQuery = gql`
       subCaption
       catchphrase
       address
+      localizations(includeCurrent: true) {
+        locale
+        address
+      }
     }
     socials {
       name
@@ -46,6 +50,10 @@ export const getAllQuery = gql`
       }
       description
       techStack
+      localizations(includeCurrent: true) {
+        locale
+        description
+      }
     }
     customers (orderBy: updatedAt_DESC) {
       logo {
@@ -64,6 +72,10 @@ export const getAllQuery = gql`
       location
       startedAt
       endedAt
+      localizations(includeCurrent: true) {
+        locale
+        description
+      }
     }
     educations {
       name
@@ -75,10 +87,18 @@ export const getAllQuery = gql`
       location
       startedAt
       endedAt
+      localizations(includeCurrent: true) {
+        locale
+        description
+      }
     }
     certificates {
       name
       certificateType
+      localizations(includeCurrent: true) {
+        locale
+        name
+      }
     }
   }
 `

@@ -4,7 +4,7 @@ import * as React from 'react'
 import { Link } from 'react-router-dom'
 
 import { Container, Dropdown, DropdownProps, Grid, Image, List, Segment } from 'semantic-ui-react'
-import { getLang, langs, openChat } from '../common/util'
+import { getLang, getLocalized, langs, openChat } from '../common/util'
 import { color } from '../styles/theme'
 
 interface IFooterProps {
@@ -18,8 +18,9 @@ const styles = {
     maxWidth: 240,
   },
   dropdown: {
-    display: 'none', // TODO
+    display: 'flex',
     justifyContent: 'center',
+    marginBottom: 20,
   },
   listItem: {
     color: 'rgba(255,255,255,.9)',
@@ -35,9 +36,8 @@ const styles = {
 }
 
 const Footer = ({ lang, setLang, sites }: IFooterProps) => {
-  const { address, name, logo: { url } } = sites[0]
+  const { name, localizations, logo: { url } } = sites[0]
   const onChange = (event: React.SyntheticEvent<HTMLElement>, data: DropdownProps) => {
-    console.log(data)
     setLang(String(data.value))
   }
 
@@ -65,28 +65,25 @@ const Footer = ({ lang, setLang, sites }: IFooterProps) => {
 
       <Container style={styles.spacer} />
 
-      <div style={styles.dropdown}>
-        <Dropdown
-          text={getLang(lang).text}
-          onChange={onChange}
-          options={langs}
-        />
-      </div>
-
-      <Container style={styles.spacer} />
-
       <Grid columns={3} container stackable centered>
         <Grid.Row>
           <Grid.Column verticalAlign='middle'>
-            <Image src={url} size='tiny' centered/>
+            <Image src={url} size='tiny' centered />
           </Grid.Column>
-          <Grid.Column verticalAlign='middle' centered style={styles.address}>
+          <Grid.Column verticalAlign='middle' centered='true' style={styles.address}>
               {name}
               <br />
-              {address}
+              {getLocalized(lang, localizations, 'address')}
           </Grid.Column>
           <Grid.Column verticalAlign='middle'>
-              © 2021 — All Rights Reserved
+            <div style={styles.dropdown}>
+              <Dropdown
+                text={getLang(lang).text}
+                onChange={onChange}
+                options={langs}
+              />
+            </div>
+            © 2021 — All Rights Reserved
           </Grid.Column>
         </Grid.Row>
       </Grid>

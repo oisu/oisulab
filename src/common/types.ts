@@ -10,11 +10,17 @@ interface IWork {
   logo: IImage,
   url: string,
   techStack: string,
+  localizations: [IWorkLocalized],
+}
+
+interface IWorkLocalized {
+  locale: string,
+  description: string,
 }
 
 interface IAllDataResponse {
   data: {
-    works: [IWork]
+    works: [IWork],
     educations: [IEducation],
     certificates: [ICertificate],
     experiences: [IExperience],
@@ -36,6 +42,12 @@ interface ISite {
   caption: string,
   subCaption: string,
   catchphrase: string,
+  address: string,
+  localizations: [ISiteLocalized],
+}
+
+interface ISiteLocalized {
+  locale: string,
   address: string,
 }
 
@@ -62,6 +74,12 @@ interface IExperience {
   image: IImage,
   startedAt: string,
   endedAt?: string
+  localizations: [IExperienceLocalized],
+}
+
+interface IExperienceLocalized {
+  locale: string,
+  description: string,
 }
 
 interface IImage {
@@ -76,6 +94,12 @@ interface IEducation {
   image: IImage,
   startedAt: string,
   endedAt: string
+  localizations: [IEducationLocalized],
+}
+
+interface IEducationLocalized {
+  locale: string,
+  description: string,
 }
 
 interface ICertificate {
@@ -83,6 +107,12 @@ interface ICertificate {
   certificateType: string,
   startedAt: string,
   endedAt: string
+  localizations: [ICertificateLocalized],
+}
+
+interface ICertificateLocalized {
+  locale: string,
+  name: string,
 }
 
 interface IMe {

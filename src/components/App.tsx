@@ -1,4 +1,5 @@
 // tslint:disable:no-console
+import Cookies from 'js-cookie'
 import * as React from 'react'
 import { ChildDataProps } from 'react-apollo'
 import { Helmet } from 'react-helmet'
@@ -23,8 +24,10 @@ interface State {
 class App extends React.Component<ChildDataProps<IAllDataResponse>, State> {
   constructor (props: ChildDataProps<IAllDataResponse>) {
     super(props)
+    // TODO: Turn this React.Context
+    const lang = Cookies.get('lang') || 'en'
     this.state = {
-      lang: 'en',
+      lang,
     }
   }
   public render () {
@@ -44,6 +47,7 @@ class App extends React.Component<ChildDataProps<IAllDataResponse>, State> {
 
     const setLang = (langKey: string) => {
       const lang = getLang(langKey)
+      Cookies.set('lang', langKey)
       this.setState({
         lang: lang.key
       })
@@ -52,11 +56,13 @@ class App extends React.Component<ChildDataProps<IAllDataResponse>, State> {
       certificates,
       educations,
       experiences,
+      lang: this.state.lang,
       mes,
       sites,
       socials,
     }
     const workProps = {
+      lang: this.state.lang,
       works,
     }
     const topProps = {

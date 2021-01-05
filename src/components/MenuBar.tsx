@@ -10,9 +10,6 @@ interface IMenuBarProps {
 }
 
 const styles = {
-  logo: {
-    marginRight: '1.5em'
-  },
   root: {
     background: color.primary,
   }
@@ -26,12 +23,12 @@ const MenuBar = ({ sites }: IMenuBarProps) => {
         <Menu.Item as={Link} to='/' header style={{ background: 'none' }}>
           {site.name}
         </Menu.Item>
-        <Menu.Item as={Link} to='/team'>Team</Menu.Item>
-        <Menu.Item as={Link} to='/work'>Works</Menu.Item>
+        <Menu.Item as={Link} to='/team'><u>Team</u></Menu.Item>
+        <Menu.Item as={Link} to='/work'><u>Works</u></Menu.Item>
         <Menu.Item as='a' href='https://blog.oisulab.com' target='_blank'>
-          Blog
+          <u>Blog</u>
         </Menu.Item>
-        <Menu.Item as='a' onClick={openChat}>Contact</Menu.Item>
+        <Menu.Item as='a' onClick={openChat}><u>Contact</u></Menu.Item>
       </Container>
     </Menu>
   )

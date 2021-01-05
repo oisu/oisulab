@@ -4,13 +4,16 @@ import * as React from 'react'
 import { Icon, Item, Label } from 'semantic-ui-react'
 import * as shortid from 'shortid'
 
+import { getLocalized } from '../common/util'
+
 interface IEducationProps {
   educations: [IEducation]
+  lang: string
 }
 
 const formattedDate = (date: string) => moment(date).format('MMM YYYY')
 
-const Education = ({ educations }: IEducationProps) => {
+const Education = ({ educations, lang }: IEducationProps) => {
   return (
     <React.Fragment>
       {educations && educations.map(e =>
@@ -23,7 +26,9 @@ const Education = ({ educations }: IEducationProps) => {
                 <Icon name='calendar'/>
                 <span>{formattedDate(e.startedAt) + ' - ' + formattedDate(e.endedAt)}</span>
               </Item.Meta>
-              <Item.Description>{e.description}</Item.Description>
+              <Item.Description>
+                {getLocalized(lang, e.localizations, 'description')}
+              </Item.Description>
               <Item.Extra>
                 {e.major.split(',').map(t =>
                   <Label key={shortid.generate()}>{t}</Label>

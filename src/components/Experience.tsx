@@ -4,8 +4,10 @@ import * as React from 'react'
 
 import { Divider, Icon, Item, Label } from 'semantic-ui-react'
 import * as shortid from 'shortid'
+import { getLocalized } from '../common/util'
 
 interface IExperienceProps {
+  lang: string
   experiences: [IExperience]
 }
 
@@ -13,7 +15,14 @@ const formattedDate = (date?: string) => {
   return date ? moment(date).format('MMM YYYY') : 'Present'
 }
 
-const Experience = ({ experiences }: IExperienceProps) => {
+const styles = {
+  description: {
+    marginBottom: 10,
+    marginTop: 10,
+  },
+}
+
+const Experience = ({ experiences, lang }: IExperienceProps) => {
   return (
     <React.Fragment>
       {experiences && experiences.map(e =>
@@ -31,7 +40,9 @@ const Experience = ({ experiences }: IExperienceProps) => {
                   <Icon name='calendar'/>
                   <span>{formattedDate(e.startedAt) + ' - ' + formattedDate(e.endedAt)}</span>
                 </Item.Meta>
-                <Item.Description>{e.description}</Item.Description>
+                <Item.Description style={styles.description}>
+                  {getLocalized(lang, e.localizations, 'description')}
+                </Item.Description>
                 <Item.Extra>
                   {e.techStack.split(',').map(t =>
                     <Label key={shortid.generate()}>{t}</Label>
